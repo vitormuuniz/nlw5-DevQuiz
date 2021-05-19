@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { SettingController } from "./controllers/SettingController";
+import { SettingsController } from "./controllers/SettingsController";
 
 const routes = Router();
 
-const settingController = new SettingController();
+const settingController = new SettingsController();
 
 routes.post("/settings", settingController.create);
 

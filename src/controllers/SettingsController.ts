@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
 import { getCustomRepository } from "typeorm";
-import { SettingRepository } from "../repositories/SettingRepository";
+import { SettingsRepository } from "../repositories/SettingsRepository";
 
-class SettingController {
+class SettingsController {
   async create(request: Request, response: Response) {
     const { chat, username } = request.body;
 
-    const settingRepository = getCustomRepository(SettingRepository);
+    const settingRepository = getCustomRepository(SettingsRepository);
 
     const settings = settingRepository.create({
       chat,
@@ -19,4 +19,4 @@ class SettingController {
   }
 }
 
-export { SettingController };
+export { SettingsController };
