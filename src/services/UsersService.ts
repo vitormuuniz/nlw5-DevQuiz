@@ -10,12 +10,10 @@ class UsersService {
   }
 
   async create(email: string) {
-    const userAlreadyExists = await this.usersRepository.findOne({
-      email,
-    });
+    const userAlreadyExists = await this.findByEmail(email);
 
     if (userAlreadyExists) {
-      throw new Error("User already exists!");
+      return userAlreadyExists;
     }
 
     const user = this.usersRepository.create({
@@ -25,6 +23,12 @@ class UsersService {
     await this.usersRepository.save(user);
 
     return user;
+  }
+
+  async findByEmail(email: string) {
+    return await this.usersRepository.findOne({
+      email,
+    });
   }
 }
 
