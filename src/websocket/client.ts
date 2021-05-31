@@ -59,7 +59,7 @@ io.on("connect", (socket: Socket) => {
   });
 
   socket.on("client_send_to_admin", async (params) => {
-    const { text, socked_admin_id } = params;
+    const { text, socket_admin_id } = params;
 
     const socket_id = socket.id;
 
@@ -70,7 +70,7 @@ io.on("connect", (socket: Socket) => {
       user_id,
     });
 
-    io.to(socked_admin_id).emit("admin_receive_message", {
+    io.to(socket_admin_id).emit("admin_receive_message", {
       message,
       socket_id,
     });
